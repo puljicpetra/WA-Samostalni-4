@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "ime": "Ana",
+      "prezime": "Anić",
+      "godine_staža": 5,
+      "pozicija": "Programer"
+    },
+    {
+      "id": 2,
+      "ime": "Iva",
+      "prezime": "Ivić",
+      "godine_staža": 2,
+      "pozicija": "Dizajner"
+    }
+]
+  

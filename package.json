@@ -1,0 +1,16 @@
+{
+  "name": "wa-samostalni-4",
+  "version": "1.0.0",
+  "description": "Izradite novi Express poslužitelj i definirajte jednostavni API za upravljanje podacima o zaposlenicima neke\r organizacije. API treba imati sljedeće rute:\r - GET /zaposlenici - dohvat svih zaposlenika\r - GET /zaposlenici/:id - dohvat zaposlenika po ID-u\r - POST /zaposlenici - dodavanje novog zaposlenika\r Implementirajte osnovne funkcionalnosti za dohvat, dodavanje i dohvat pojedinog zaposlenika. Zaposlenik\r treba imati sljedeće atribute:\r - id - jedinstveni identifikator zaposlenika (generira se na poslužitelju)\r - ime - ime zaposlenika\r - prezime - prezime zaposlenika\r - godine_staža - godine radnog staža zaposlenika\r - pozicija - pozicija zaposlenika u organizaciji (npr. direktor, voditelj, programer, dizajner, itd.)\r Pohranite prvo ručno nekoliko zaposlenika u JSON datoteku zaposlenici.json.\r 1. Definirajte osnovu validaciju podataka za sva 3 zahtjeva: provjera jesu li svi podaci poslani, jesu li ID i\r godine staža brojevi, jesu li ime i prezime stringovi itd. Ukoliko podaci nisu ispravni, vratite\r odgovarajući status i poruku greške. Ukoliko nisu pronađeni zaposlenici, vratite odgovarajući status i\r poruku.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "fs": "^0.0.1-security"
+  }
+}
