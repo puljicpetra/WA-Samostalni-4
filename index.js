@@ -11,11 +11,31 @@ app.get('/', (req, res) => {
 });
 
 app.get('/zaposlenici', (req, res) => {
+    const { sortiraj_po_godinama, pozicija, godine_staža_min, godine_staža_max } = req.query;
+
     fs.readFile('zaposlenici.json', 'utf8', (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Greška (čitanje podataka).' });
         }
-        const zaposlenici = JSON.parse(data);
+        let zaposlenici = JSON.parse(data);
+
+        if (pozicija) {
+            zaposlenici = zaposlenici.filter(zaposlenik => zaposlenik.pozicija.toLowerCase() === pozicija.toLowerCase());
+        }
+
+        if (godine_staža_min) {
+            zaposlenici = zaposlenici.filter(zaposlenik => zaposlenik.godine_staža >= parseInt(godine_staža_min));
+        }
+        if (godine_staža_max) {
+            zaposlenici = zaposlenici.filter(zaposlenik => zaposlenik.godine_staža <= parseInt(godine_staža_max));
+        }
+
+        if (sortiraj_po_godinama === 'asc') {
+            zaposlenici.sort((a, b) => a.godine_staža - b.godine_staža);
+        } else if (sortiraj_po_godinama === 'desc') {
+            zaposlenici.sort((a, b) => b.godine_staža - a.godine_staža);
+        }
+        
         res.json(zaposlenici);
     });
 });
