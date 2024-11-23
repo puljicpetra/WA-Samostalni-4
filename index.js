@@ -18,6 +18,25 @@ app.get('/zaposlenici', (req, res) => {
     });
 });
 
+app.get('/zaposlenici/:id', (req, res) => {
+    const id_zaposlenika = req.params.id;
+    fs.readFile('zaposlenici.json', 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Greška (čitanje podataka).' });
+        }
+
+        const zaposlenici = JSON.parse(data); 
+        const zaposlenik = zaposlenici.find(zaposlenik => zaposlenik.id == id_zaposlenika);
+
+        if (zaposlenik) {
+            res.json(zaposlenik);
+        } else {
+            res.json({ message: 'Zaposlenik s traženim ID-em ne postoji.' });
+        }
+    });
+});
+
+
 app.listen(PORT, error => {
     if(error) {
         console.error(`Greška: ${error.message}`);
